@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Imagenes/icono.png" type="image/png">
+    <title>JS - Música en el cuestionario.</title>
+</head>
+<body>
+    <h1>
+        <span class="amarillo">JavaScript</span> - Música en el cuestionario.
+    </h1>
+    <p>
+        En esta actividad vas a incorporar música a al cuestionario personalizado utilizando <span class="naranja">HTML</span> y <span class="amarillo">JavaScript</span>. La música deberá cambiar según el momento del cuestionario y según el puntaje obtenido al finalizarlo.
+    </p>
+    <hr>
+    <h2>
+        Requisitos técnicos.
+    </h2>
+    <ol>
+        <li>
+            <p>
+                Incorporar los archivos de <span class="verde">audio</span> al proyecto.
+            </p>
+        </li>
+        <li>
+            <p>
+                Utilizar un elemento <span class="verde">audio</span> para reproducir las canciones.
+            </p>
+        </li>
+        <li>
+            <p>
+                Seleccionar el elemento <span class="verde">audio</span> mediante <span class="amarillo">JavaScript</span> utilizando su <span class="celeste">id</span>.
+            </p>
+        </li>
+        <li>
+            <p>
+                Iniciar la música al pasar <code class="gris">500 ms</code>.
+            </p>
+        </li>
+        <li>
+            <p>
+                Reproducir una canción diferente durante las preguntas.
+            </p>
+        </li>
+        <li>
+            <p>
+                Al finalizar el cuestionario, reproducir una canción diferente según el punta obtenido:
+            </p>
+            <ul>
+                <li>
+                    <b>Mayor a 7 puntos.</b>
+                </li>
+                <li>
+                    <b>Entre 4 y 7 puntos.</b>
+                </li>
+                <li>
+                    <b>Menor a 4 puntos.</b>
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <br>
+    <hr>
+    <br>
+    <h2>Estructura del proyecto.</h2>
+    <p>
+        Organice los archivos del proyecto de la siguiente manera:
+    </p>
+<pre><code class="cpp">Apellido_Nombre/
+├── index.html
+├── cuestionario.html
+├── final.html
+├── style.css
+├── main.js
+└── audios/
+    ├── inicio.mp3
+    ├── preguntas.mp3
+    ├── mayor7.mp3
+    ├── entre4y7.mp3
+    └── menor4.mp3</code></pre>
+    <br>
+    <hr>
+    <br>
+    <center>
+        <h3>
+            Ayudas
+        </h3>
+    </center>
+    <h4>
+        <span class="violeta">setTimeout</span><span class="dorado">()</span>
+    </h4>
+    <p>
+       La función <span class="violeta">setTimeout</span><span class="dorado">()</span> permite ejecutar una acción después de un tiempo determinado. El tiempo se expresa en milisegundos.
+    </p>
+    <p>
+        <i>Código de ejemplo:</i>
+    </p>
+<pre><code class="cpp"><span class="violeta">setTimeout</span><span class="dorado">(</span><span class="rojo">function</span><span class="violeta">(){
+    <span class="celeste">console</span>.<span class="violeta">log</span><span class="azul">(</span><span class="celeste">"Pasaron 500 milisegundos"</span><span class="azul">)</span>;
+<span class="violeta">}</span>,<span class="verde">500</span><span class="dorado">)</span>;</code></pre>
+    <br>
+    
+    <fieldset>
+        <legend>
+             ⚠️Importante⚠️
+        </legend>
+        <p>
+            <i>
+                El navegador puede bloquear la reproducción con sonido si todavía no hubo interacción del usuario. Por eso, para que funcione de forma confiable en todos los navegadores, la reproducción automática puede requerir que el usuario haya interactuado previamente con la página.
+            </i>
+        </p>
+    </fieldset>
+    <br>
+    <hr>
+    <br>
+    <h4>Etiqueta &lt;<span class="verde">audio</span>&gt;.</h4>
+    <p>
+        La etiqueta &lt;<span class="verde">audio</span>&gt; permite incorporar un archivo de sonido al documento <span class="naranja">HTML</span>.
+    </p>
+<pre><code class="cpp">    &lt;<span class="verde">audio</span> <span class="celeste">id</span>=<span class="celeste">"musica"</span>&gt;&lt;/<span class="verde">audio</span>&gt;</code></pre>
+    <br>
+    <b><u>Seleccionar el audio mediante <span class="amarillo">JavaScript</span>.</u></b>
+    <br>
+    <p>
+        Una vez creado el elemento &lt;<span class="verde">audio</span>&gt;, podemos seleccionarlo desde <span class="amarillo">JavaScript</span> utilizando su <span class="celeste">id</span> y <span class="violeta">getElementById</span><span class="dorado">()</span>.
+    </p>
+<pre><code class="cpp">     <span class="rojo">let</span> musica = <span class="celeste">document</span>.<span class="violeta">getElementById</span><span class="dorado">(</span><span class="celeste">"musica"</span><span class="dorado">);</span></code></pre>
+    <br>
+    <p>
+        De esta manera, la variable <code class="gris">musica</code> hace referencia al elemento &lt;<span class="verde">audio</span>&gt; y podemos utilizarla para controlar la reproducción, cambiar la canción, modificar el volument, etc.
+    </p>
+    <br>
+    <b><code class="gris">src.</code></b><br>
+    <p>
+        La proiedad <code class="gris">src</code> permite indicar qué archivo de audio queremos reproducir.
+    </p>
+<pre><code class="cpp">     musica.src = <span class="celeste">"audios/inicio.mp3"</span></code></pre><br>
+    <b><code class="gris">play()</code></b><br>
+    <p>
+        La función <code class="gris">play()</code> comienza la reproducción del audio.
+    </p>
+<pre><code class="cpp">    musica.play();</code></pre>
+    <br>
+    <b><code class="gris">pause()</code></b><br>
+    <p>
+        La función <code class="gris">pause()</code> permite detener temporalmente la reproducción.
+    </p>
+<pre><code class="cpp"> musica.pause();</code></pre>
+    <br>
+    <hr>
+    <br>
+    
+</body>
+</html>
+
